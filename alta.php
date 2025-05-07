@@ -1,11 +1,12 @@
 <?php
 
+include_once 'cone.php';
 
-selec($conexdb)
+selec($conexdb);
 
-function selec($cdb){
+function selec($conexdb){
     if(isset($_POST['agre'])){
-        agregar($cdb);
+        agregar($conexdb);
     }
 }
 
