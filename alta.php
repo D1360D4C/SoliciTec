@@ -32,19 +32,28 @@ function agregar($cdb){
 function sesion($cdb){
     $email = $_POST['ema'];
     $pass = $_POST['pass'];
-    $nombreU = "SELECT nick FROM usuarios WHERE email='$email' AND contra= '$pass'";
 
-    $consulta= mysqli_query($cdb, $nombreU);
+    $consulta = "SELECT nick, contra FROM usuarios WHERE email= ? ";
 
-    $coname= $cdb->query($nombreU);
+    $stmt = $cdb-> prepare($consulta);
+    $stmt ->bind_param("s",$email);
+    $stmt ->execute();
+    $resultado = $stmt->get_result();
 
-    $name = $coname ? $coname->fetch_assoc()['nick'] : null;
+    if($resultado && $resultado->num_rows > 0) {
+        $registro = $resultado->fetch_assoc();
+        $contrase = $registro['contra'];
+        $nombre = $registro['nick'];
+        
+        if($pass == $contrase){
+            $_SESSION['nick'] = $nombre;
+            header("location: inicio.php");
+            exit();
+        }
+       
+    }
+    mysqli_close($cdb);
 
-    if(mysqli_num_rows($consulta) > 0) {
-        $_SESSION['nick'] = $name;
-        header ("location: inicio.php");
-        exit();
-    }else{
         echo '
             <script>
             alert("Usuario no encontrado, introduzca datos verificados");
@@ -53,6 +62,4 @@ function sesion($cdb){
             exit();
     }
 
-
-}
 ?>
