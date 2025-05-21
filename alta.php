@@ -21,8 +21,9 @@ function agregar($cdb){
     $apellido = $_POST['ape1'];
     $email = $_POST['ema'];
     $contra = $_POST['pass1'];
+    $encrip = password_hash($contra,PASSWORD_DEFAULT);
 
-    $consulta = "INSERT INTO usuarios(nick, apellido,email,contra) VALUES ('$nombre', '$apellido', '$email','$contra')";
+    $consulta = "INSERT INTO usuarios(nick, apellido,email,contra) VALUES ('$nombre', '$apellido', '$email','$encrip')";
 
     mysqli_query($cdb,$consulta);
     mysqli_close($cdb);
@@ -45,7 +46,7 @@ function sesion($cdb){
         $contrase = $registro['contra'];
         $nombre = $registro['nick'];
         
-        if($pass == $contrase){
+        if(password_verify($pass,$contrase)){
             $_SESSION['nick'] = $nombre;
             header("location: inicio.php");
             exit();
