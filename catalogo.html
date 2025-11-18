@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo — Sala de Servidores</title>
+    <link rel="stylesheet" href="oculto1.css">
+</head>
+<body>
+    <header class="nav">
+        <div class="container nav-inner">
+            <div class="brand"><img src="logo.png" alt="Logo del colegio" class="brand-logo"></div>
+            <nav class="menu">
+                <a href="inicio.php">Inicio</a>
+                <a href="#">Mis Préstamos</a>
+                <a href="#">Contacto</a>
+            </nav>
+            <div>
+                <a class="btn btn-outline" href="index.html">Iniciar sesión</a>
+            </div>
+        </div>
+    </header>
+    <main class="main">
+        <!-- Encabezado del catálogo -->
+        <section class="catalog-hero">
+            <div class="container">
+                <h1 class="title">Catálogo — Recursos de Escuela</h1>
+                <p class="subtitle">Explora equipos típicos de una escuela: computadoras, monitores, periféricos y cables generales.</p>
+                <div class="actions">
+                    <a class="btn" href="inicio.php">Volver al inicio</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Barra de búsqueda y filtros -->
+        <section class="catalog-toolbar">
+            <div class="container toolbar-inner">
+                <input id="searchInput" type="text" placeholder="Buscar equipos (ej: switch, UPS, NAS)">
+                <div class="filters">
+                    <button class="filter-btn active" data-filter="all">Todos</button>
+                    <button class="filter-btn" data-filter="computadora">Computadoras</button>
+                    <button class="filter-btn" data-filter="monitor">Monitores</button>
+                    <button class="filter-btn" data-filter="periferico">Periféricos</button>
+                    <button class="filter-btn" data-filter="cable">Cables</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ¿Cómo usar el catálogo? en fila, título centrado debajo -->
+        <section class="container catalog-usage">
+            <div class="steps-row">
+                <div class="step">
+                    <div class="step-icon">🔎</div>
+                    <div>
+                        <h3>Buscar y filtrar</h3>
+                        <p>Usá la barra de búsqueda y las categorías para encontrar el equipo.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-icon">📝</div>
+                    <div>
+                        <h3>Solicitar préstamo</h3>
+                        <p>Seleccioná el equipo y seguí las instrucciones para pedirlo.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-icon">✅</div>
+                    <div>
+                        <h3>Retirar y usar</h3>
+                        <p>Retirá el equipo en horario acordado y utilizalo según el manual.</p>
+                    </div>
+                </div>
+            </div>
+            <h2 class="section-title center">¿Cómo usar el catálogo?</h2>
+        </section>
+
+        <!-- Equipos Disponibles (portado del home) -->
+        <section class="container">
+            <h2 class="section-title">Equipos Disponibles</h2>
+            <div class="catalog-grid" id="catalogGrid">
+                <!-- Computadoras -->
+                <article class="catalog-card" data-category="computadora" data-name="PC de Escritorio i5" data-status="disponible">
+                    <div class="icon">🖥️</div>
+                    <h3>PC de Escritorio i5</h3>
+                    <p>8GB RAM, SSD 240GB — Aula informática.</p>
+                    <div class="meta">
+                        <span class="badge">Disponible</span>
+                        <span class="tag">Computadora</span>
+                    </div>
+                    <div class="qty-control" data-item="PC de Escritorio i5">
+                        <button class="qty-btn minus">−</button>
+                        <span class="qty">0</span>
+                        <button class="qty-btn plus">+</button>
+                    </div>
+                </article>
+                <article class="catalog-card" data-category="computadora" data-name="Notebook 14'' i3" data-status="en-uso">
+                    <div class="icon">💻</div>
+                    <h3>Notebook 14'' i3</h3>
+                    <p>8GB RAM — Préstamo a docentes.</p>
+                    <div class="meta">
+                        <span class="badge muted">En uso</span>
+                        <span class="tag">Computadora</span>
+                    </div>
+                    <div class="qty-control" data-item="Notebook 14'' i3">
+                        <button class="qty-btn minus">−</button>
+                        <span class="qty">0</span>
+                        <button class="qty-btn plus">+</button>
+                    </div>
+                    
+                </article>
+                <!-- Notebooks adicionales -->
+                <article class="catalog-card" data-category="computadora" data-name="Notebook 15'' i5" data-status="disponible">
+                    <div class="icon">💻</div>
+                    <h3>Notebook 15'' i5</h3>
+                    <p>16GB RAM, SSD 512GB — Uso avanzado.</p>
+                    <div class="meta">
+                        <span class="badge">Disponible</span>
+                        <span class="tag">Computadora</span>
+                    </div>
+                    <div class="qty-control" data-item="Notebook 15'' i5">
+                        <button class="qty-btn minus">−</button>
+                        <span class="qty">0</span>
+                        <button class="qty-btn plus">+</button>
+                    </div>
+                    
+                </article>
+                <article class="catalog-card" data-category="computadora" data-name="Notebook 13'' Ryzen 5" data-status="disponible">
+                    <div class="icon">💻</div>
+                    <h3>Notebook 13'' Ryzen 5</h3>
+                    <p>8GB RAM, SSD 256GB — Ultraportátil.</p>
+                    <div class="meta">
+                        <span class="badge">Disponible</span>
+                        <span class="tag">Computadora</span>
+                    </div>
+                    <div class="qty-control" data-item="Notebook 13'' Ryzen 5">
+                        <button class="qty-btn minus">−</button>
+                        <span class="qty">0</span>
+                        <button class="qty-btn plus">+</button>
+                    </div>
+                    
+                </article>
+
+                <!-- Monitores -->
+                <article class="catalog-card" data-category="monitor" data-name="Monitor 24'' FHD" data-status="disponible">
+                    <div class="icon">📺</div>
+                    <h3>Monitor 24'' FHD</h3>
+                    <p>1920x1080 — Ideal para diseño y ofimática.</p>
+                    <div class="meta">
+                        <span class="badge">Disponible</span>
+                        <span class="tag">Monitor</span>
+                    </div>
+                    <div class="qty-control" data-item="Monitor 24'' FHD">
+                        <button class="qty-btn minus">−</button>
+                        <span class="qty">0</span>
+                        <button class="qty-btn plus">+</button>
+                    </div>
+                </article>
+                <article class="catalog-card" data-category="monitor" data-name="Monitor 19''" data-status="mantenimiento">
+                    <div class="icon">🖥️</div>
+                    <h3>Monitor 19''</h3>
+                    <p>Revisión de backlight en curso.</p>
+                    <div class="meta">
+                        <span class="badge warn">Mantenimiento</span>
+                        <span class="tag">Monitor</span>
+                    </div>
+                </article>
+
+                <!-- Periféricos: mouse, teclado, auriculares -->
+                <article class="catalog-card" data-category="periferico" data-name="Mouse óptico USB" data-status="disponible">
+                    <div class="icon">🖱️</div>
+                    <h3>Mouse óptico USB</h3>
+                    <p>Sensor 1200 DPI — uso general.</p>
+                    <div class="meta">
+                        <span class="badge">Disponible</span>
+                        <span class="tag">Periférico</span>
+                    </div>
+                    <div class="qty-control" data-item="Mouse óptico USB">
+                        <button class="qty-btn minus">−</button>
+                        <span class="qty">0</span>
+                        <button class="qty-btn plus">+</button>
+                    </div>
+                </article>
+                <article class="catalog-card" data-category="periferico" data-name="Teclado membrana USB" data-status="disponible">
+                    <div class="icon">⌨️</div>
+                    <h3>Teclado membrana USB</h3>
+                    <p>Español ISO — teclas silenciosas.</p>
+                    <div class="meta">
+                        <span class="badge">Disponible</span>
+                        <span class="tag">Periférico</span>
+                    </div>
+                    <div class="qty-control" data-item="Teclado membrana USB">
+                        <button class="qty-btn minus">−</button>
+                        <span class="qty">0</span>
+                        <button class="qty-btn plus">+</button>
+                    </div>
+                </article>
+                <article class="catalog-card" data-category="periferico" data-name="Auriculares con micrófono" data-status="disponible">
+                    <div class="icon">🎧</div>
+                    <h3>Auriculares con micrófono</h3>
+                    <p>Compatibles con PC — ideal para videollamadas.</p>
+                    <div class="meta">
+                        <span class="badge">Disponible</span>
+                        <span class="tag">Periférico</span>
+                    </div>
+                    <div class="qty-control" data-item="Auriculares con micrófono">
+                        <button class="qty-btn minus">−</button>
+                        <span class="qty">0</span>
+                        <button class="qty-btn plus">+</button>
+                    </div>
+                </article>
+
+                <!-- Cables -->
+                <article class="catalog-card" data-category="cable" data-name="Cable HDMI 2m" data-status="disponible">
+                    <div class="icon">🔗</div>
+                    <h3>Cable HDMI 2m</h3>
+                    <p>Conecta notebooks a proyectores/TV.</p>
+                    <div class="meta">
+                        <span class="badge">Disponible</span>
+                        <span class="tag">Cable</span>
+                    </div>
+                    <div class="qty-control" data-item="Cable HDMI 2m">
+                        <button class="qty-btn minus">−</button>
+                        <span class="qty">0</span>
+                        <button class="qty-btn plus">+</button>
+                    </div>
+                </article>
+                <article class="catalog-card" data-category="cable" data-name="Cable VGA 1.5m" data-status="disponible">
+                    <div class="icon">🔌</div>
+                    <h3>Cable VGA 1.5m</h3>
+                    <p>Usado en monitores antiguos del aula.</p>
+                    <div class="meta">
+                        <span class="badge">Disponible</span>
+                        <span class="tag">Cable</span>
+                    </div>
+                    <div class="qty-control" data-item="Cable VGA 1.5m">
+                        <button class="qty-btn minus">−</button>
+                        <span class="qty">0</span>
+                        <button class="qty-btn plus">+</button>
+                    </div>
+                </article>
+                <article class="catalog-card" data-category="cable" data-name="Cable de energía estándar" data-status="disponible">
+                    <div class="icon">🔌</div>
+                    <h3>Cable de energía estándar</h3>
+                    <p>Compatibilidad PC/monitor — repuestos disponibles.</p>
+                    <div class="meta">
+                        <span class="badge">Disponible</span>
+                        <span class="tag">Cable</span>
+                    </div>
+                    <div class="qty-control" data-item="Cable de energía estándar">
+                        <button class="qty-btn minus">−</button>
+                        <span class="qty">0</span>
+                        <button class="qty-btn plus">＋</button>
+                    </div>
+                </article>
+            </div>
+            <div class="actions center">
+                <button id="solicitarBtn" class="btn" disabled>Solicitar</button>
+            </div>
+        </section>
+
+        
+        <!-- Modal de solicitud -->
+        <div id="requestModal" class="modal hidden">
+            <div class="modal-content">
+                <h3>Solicitud de Préstamo</h3>
+                <p class="muted">Resumen de items seleccionados:</p>
+                <ul id="modalSummary" class="summary"></ul>
+                <form id="requestForm">
+                    <div class="form-row">
+                        <input type="text" id="nombre" placeholder="Nombre y apellido" required>
+                    </div>
+                    <div class="form-row">
+                        <input type="email" id="email" placeholder="Email" required>
+                    </div>
+                    <div class="form-row">
+                        <textarea id="nota" placeholder="Notas (opcional)"></textarea>
+                    </div>
+                    <div class="actions">
+                        <button type="submit" class="btn">Enviar solicitud</button>
+                        <button type="button" id="cerrarModal" class="btn btn-outline">Cancelar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+    <script>
+        // Búsqueda y filtros básicos del catálogo
+        const searchInput = document.getElementById('searchInput');
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const cards = Array.from(document.querySelectorAll('#catalogGrid .catalog-card'));
+        const qtyControls = Array.from(document.querySelectorAll('.qty-control'));
+        const solicitarBtn = document.getElementById('solicitarBtn');
+        const requestModal = document.getElementById('requestModal');
+        const cerrarModal = document.getElementById('cerrarModal');
+        const modalSummary = document.getElementById('modalSummary');
+        const requestForm = document.getElementById('requestForm');
+
+        const cart = new Map(); // itemName -> quantity
+
+        function applyFilters() {
+            const q = (searchInput.value || '').toLowerCase();
+            const activeFilter = document.querySelector('.filter-btn.active')?.dataset.filter || 'all';
+            cards.forEach(card => {
+                const name = (card.dataset.name || '').toLowerCase();
+                const cat = card.dataset.category;
+                const matchText = q === '' || name.includes(q);
+                const matchCat = activeFilter === 'all' || activeFilter === cat;
+                card.style.display = (matchText && matchCat) ? '' : 'none';
+            });
+            updateSolicitarEnabled();
+        }
+
+        searchInput?.addEventListener('input', applyFilters);
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                applyFilters();
+            });
+        });
+
+        applyFilters();
+
+        // Añadir al carrito desde botón +
+        // Controles de cantidad presentes en todos los cards
+
+        // Controles de cantidad para notebooks
+        qtyControls.forEach(ctrl => {
+            const item = ctrl.dataset.item;
+            const qtyEl = ctrl.querySelector('.qty');
+            const minus = ctrl.querySelector('.minus');
+            const plus = ctrl.querySelector('.plus');
+
+            function render() {
+                qtyEl.textContent = String(cart.get(item) || 0);
+                updateSolicitarEnabled();
+            }
+
+            minus.addEventListener('click', () => {
+                const cur = cart.get(item) || 0;
+                if (cur > 0) cart.set(item, cur - 1);
+                render();
+            });
+            plus.addEventListener('click', () => {
+                const cur = cart.get(item) || 0;
+                cart.set(item, cur + 1);
+                render();
+            });
+
+            render();
+        });
+
+        function updateQtyDisplays(){
+            qtyControls.forEach(ctrl => {
+                const item = ctrl.dataset.item;
+                const qtyEl = ctrl.querySelector('.qty');
+                qtyEl.textContent = String(cart.get(item) || 0);
+            });
+        }
+
+        function updateSolicitarEnabled() {
+            const total = Array.from(cart.values()).reduce((a,b)=>a+b,0);
+            solicitarBtn.disabled = total === 0;
+        }
+
+        function openModal() {
+            modalSummary.innerHTML = '';
+            for (const [item, qty] of cart.entries()) {
+                if (qty > 0) {
+                    const li = document.createElement('li');
+                    li.textContent = `${item} × ${qty}`;
+                    modalSummary.appendChild(li);
+                }
+            }
+            requestModal.classList.remove('hidden');
+        }
+
+        solicitarBtn.addEventListener('click', openModal);
+        cerrarModal?.addEventListener('click', ()=> requestModal.classList.add('hidden'));
+
+        requestForm?.addEventListener('submit', (e)=>{
+            e.preventDefault();
+            alert('Solicitud enviada. Gracias!');
+            cart.clear();
+            updateSolicitarEnabled();
+            requestModal.classList.add('hidden');
+        });
+    </script>
+    <footer class="footer">
+        <div class="container">
+            <div class="links">
+                <a href="#">Horarios de Atención</a>
+                <a href="#">Política de Préstamo</a>
+                <a href="#">Manual de Uso</a>
+            </div>
+            <small>© 2024 Colegio Técnico. Todos los derechos reservados.</small>
+        </div>
+    </footer>
+</body>
+</html>
