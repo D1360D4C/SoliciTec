@@ -55,54 +55,7 @@
             x.parentNode.insertBefore(s, x);
           }
 
-    let palabrasProhibidas = ['gay', 'mierda', 'puta', 'puto', 'pelotudo', 'boludo', 'hijo de puta', 'hija de puta', 'cabron', 'cabrona', 'pendejo', 'pendeja', 'idiota', 'imbecil', 'estupido', 'estupida'];
     
-    let formRegistro = document.getElementById("form2");
-    
-    let inputs = formRegistro.querySelectorAll("input");
-    
-    let botonCrear = formRegistro.querySelector("button[name='agre']");
-
-
-    function contienePalabraProhibida(texto) {
-        texto = texto.toLowerCase();
-
-        for (let i = 0; i < palabrasProhibidas.length; i++) {
-            if (texto.includes(palabrasProhibidas[i])) {
-                return true;
-            } else{
-                return false;
-            }
-        }
-           
-        
-    }
-
-
-    function validarFormulario() {
-
-        let invalido = false;
-
-        for (let i = 0; i < inputs.length; i++) {
-
-            if (contienePalabraProhibida(inputs[i].value)) {
-                invalido = true;
-            }
-        }
-        if (invalido) {
-            botonCrear.disabled = true;
-            botonCrear.textContent = "Contenido no permitido";
-            } else {
-                botonCrear.disabled = false;
-                botonCrear.textContent = "Crear cuenta";
-            }
-    }
-
-
-    for (let i = 0; i < inputs.length; i++) {
-        inputs[i].addEventListener("input", validarFormulario);
-    }
-
         }
 
         
@@ -121,10 +74,10 @@
         for (let i = 0; i < palabrasProhibidas.length; i++) {
             if (texto.includes(palabrasProhibidas[i])) {
                 return true;
-            } else{
-                return false;
             }
         }
+
+        return false;
            
         
     }
