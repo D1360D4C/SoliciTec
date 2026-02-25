@@ -11,23 +11,8 @@ $palabrasProhibidas = [
 ];
 
 
-selec($conexdb);
-
-function selec($conexdb){
-
-    if(isset($_POST['agre'])){
-        agregar($conexdb);
-    }
-
-    if(isset($_POST['sesion'])){
-        sesion($conexdb);
-    }
-}
-
-
 
 function contienePalabraProhibida($texto, $lista) {
-
     $texto = strtolower($texto);
 
     foreach ($lista as $palabra) {
@@ -35,14 +20,12 @@ function contienePalabraProhibida($texto, $lista) {
             return true;
         }
     }
-
     return false;
 }
 
 
-function agregar($cdb){
 
-    global $palabrasProhibidas;
+if (isset($_POST['agre'])) {
 
     $nombre   = $_POST['nom1'];
     $apellido = $_POST['ape1'];
@@ -63,15 +46,13 @@ function agregar($cdb){
         exit();
     }
 
-    // 🔹 Encriptar contraseña
+    
     $encrip = password_hash($contra, PASSWORD_DEFAULT);
 
-    
-    $stmt = $cdb->prepare("INSERT INTO usuarios(nick, apellido, email, contra) VALUES (?, ?, ?, ?)");
+   
+    $stmt = $conexdb->prepare("INSERT INTO usuarios (nick, apellido, email, contra) VALUES (?, ?, ?, ?)");
     $stmt->bind_param("ssss", $nombre, $apellido, $email, $encrip);
     $stmt->execute();
-
-    mysqli_close($cdb);
 
     echo "<script>
             alert('Usuario registrado correctamente');
@@ -81,36 +62,27 @@ function agregar($cdb){
 }
 
 
-
-function sesion($cdb){
+if (isset($_POST['sesion'])) {
 
     $email = $_POST['ema'];
     $pass  = $_POST['pass'];
 
-    $consulta = "SELECT nick, contra FROM usuarios WHERE email = ?";
-
-    $stmt = $cdb->prepare($consulta);
+    $stmt = $conexdb->prepare("SELECT nick, contra FROM usuarios WHERE email = ?");
     $stmt->bind_param("s", $email);
     $stmt->execute();
-
     $resultado = $stmt->get_result();
 
-    if($resultado && $resultado->num_rows > 0) {
+    if ($resultado && $resultado->num_rows > 0) {
 
         $registro = $resultado->fetch_assoc();
-        $contrase = $registro['contra'];
-        $nombre   = $registro['nick'];
 
-        if(password_verify($pass, $contrase)){
+        if (password_verify($pass, $registro['contra'])) {
 
-            $_SESSION['nick'] = $nombre;
-
+            $_SESSION['nick'] = $registro['nick'];
             header("Location: inicio.php");
             exit();
         }
     }
-
-    mysqli_close($cdb);
 
     echo "<script>
             alert('Usuario o contraseña incorrectos');
