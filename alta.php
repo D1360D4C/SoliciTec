@@ -63,4 +63,49 @@ function sesion($cdb){
             exit();
     }
 
-?>
+
+
+$palabrasProhibidas = [
+    'gay', 'mierda', 'puta', 'puto', 'pelotudo', 'boludo',
+    'hijo de puta', 'hija de puta', 'cabron', 'cabrona',
+    'pendejo', 'pendeja', 'idiota', 'imbecil', 'estupido', 'estupida'
+];
+
+
+function contienePalabraProhibida($texto, $lista) {
+    $texto = strtolower($texto);
+
+    foreach ($lista as $palabra) {
+        if (strpos($texto, $palabra) !== false) {
+            return true;
+        }
+    }
+
+    return false;
+}
+
+
+if (isset($_POST['agre'])) {
+
+    $nombre = $_POST['nom1'];
+    $apellido = $_POST['ape1'];
+    $email = $_POST['ema'];
+    $pass = $_POST['pass1'];
+
+    
+    if (
+        contienePalabraProhibida($nombre, $palabrasProhibidas) ||
+        contienePalabraProhibida($apellido, $palabrasProhibidas) ||
+        contienePalabraProhibida($email, $palabrasProhibidas) ||
+        contienePalabraProhibida($pass, $palabrasProhibidas)
+    ) {
+        echo "Error: El formulario contiene palabras no permitidas.";
+        exit();
+    }
+
+    
+    echo "Usuario registrado correctamente.";
+}
+
+?>   
+
