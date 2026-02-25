@@ -86,7 +86,10 @@ botonCrear.addEventListener("click", function (event) {
     for (let i = 0; i < inputs.length; i++) {
         if (contienePalabraProhibida(inputs[i].value)) {
             invalido = true;
+            
         }
+        if (inputs[i].type === "password") {
+            continue;
     }
 
     if (invalido) {
