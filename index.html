@@ -64,7 +64,7 @@
 'pendejo', 'pendeja', 'idiota', 'imbecil', 'estupido', 'estupida'];
 
 let formRegistro = document.getElementById("form2");
-let inputs = formRegistro.querySelectorAll("input");
+let inputs = formRegistro.querySelectorAll("input:not([type='password'])");
 let botonCrear = formRegistro.querySelector("button[name='agre']");
 
 function contienePalabraProhibida(texto) {
@@ -88,8 +88,6 @@ botonCrear.addEventListener("click", function (event) {
             invalido = true;
             
         }
-        if (inputs[i].type === "password") {
-            continue;
     }
 
     if (invalido) {
