@@ -1,4 +1,7 @@
+
 <?php
+echo "Estoy en el alta correcto";
+exit();
 session_start();
 include_once 'cone.php';
 
