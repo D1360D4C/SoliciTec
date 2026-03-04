@@ -65,7 +65,6 @@
 
 let formRegistro = document.getElementById("form2");
 let inputs = formRegistro.querySelectorAll("input:not([type='password'])");
-let botonCrear = formRegistro.querySelector("button[name='agre']");
 
 function contienePalabraProhibida(texto) {
     texto = texto.toLowerCase();
@@ -79,22 +78,22 @@ function contienePalabraProhibida(texto) {
     return false;
 }
 
-botonCrear.addEventListener("click", function (event) {
+formRegistro.addEventListener("submit", function (event) {
 
     let invalido = false;
 
     for (let i = 0; i < inputs.length; i++) {
         if (contienePalabraProhibida(inputs[i].value)) {
             invalido = true;
-            
+            break;
         }
     }
 
     if (invalido) {
         event.preventDefault();
-        botonCrear.disabled = true;
-        botonCrear.textContent = "Contenido no permitido";
+        alert("Algún campo contiene una palabra prohibida");
     }
+
 });
 
         </script>
